@@ -606,10 +606,6 @@ video {
   margin-top: 4%;
 }
 
-.mt-\[\] {
-  margin-top: ;
-}
-
 .block {
   display: block;
 }
@@ -785,10 +781,6 @@ h1,h2,p{
 
   .sm\:mt-1 {
     margin-top: 0.25rem;
-  }
-
-  .sm\:mt-8 {
-    margin-top: 2rem;
   }
 
   .sm\:flex {
