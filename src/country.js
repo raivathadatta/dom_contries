@@ -4,7 +4,7 @@ console.log(getQueryParams('country'))
 let countriesList = []
 let isDark = false
 
-let country_name = getQueryParams('country').toLowerCase()  
+let country_name = getQueryParams('country').toLowerCase()
 
 let flag_image = document.getElementById("flag_image")
 let country_details = document.getElementById("country_details")

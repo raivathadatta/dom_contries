@@ -5,26 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countries</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    
     <link href="./output.css" rel="stylesheet">
 </head>
 
-<body class="sm:px-10 pt-5 sm:text-[14px] p-[5%] text-[16px] font-serif">
+<body class="sm:px-10 pt-5 sm:text-[14px] p-[5%] text-[16px] font-serif bg-slate-200">
     <div id="loader"></div>
     <div id="screen" class="pb-[20%] ">
         <header class="flex justify-between border-b-2 mt-3 mb-1 pb-3     p-[3%] nav-bar">
             <h1 id="pagetitle"></h1>
-            <div class=" sm:flex sm:flex-row">
+            <div class=" sm:flex sm:flex-row items-center">
                 <p id="moon" class="sm:mr-2 sm:mt-1 mb-[3%]">&#127769;</p>
                 <button id="toggl_background_button" class="text-black"></button>
             </div>
         </header>
 
-        <div id="screen_body" >
-            <section class="sm:mt-8  pb-1 mb-4">
+        <div id="screen_body" class="p-[3%]" >
+            <section class=" pb-1 mb-4">
                 <div id="filter_main" class="sm:flex sm:justify-between">
-                    <input type="text" placeholder="&#x1F50D; Search for country" class="sm:w-[30%] outline-none border p-4 mb-5 w-[100%] mt-1"
+                    <input type="text" placeholder="&#x1F50D; Search for country" class="sm:w-[30%] outline-none border p-4 mb-5 w-[100%]  mt-[4%]"
                         name="Search" id="search">
-                    <select id="filter_button" class="outline-none p-[2%] sm:p-[1%] h-[2%]"> </select>
+                    <select id="filter_button" class="outline-none p-[2%] sm:p-[1%] h-[2%]  mt-[4%]"> </select>
                 </div>
             </section>
             <div class="flex flex-col items-center sm:flex-row sm:flex-wrap  " id="counties_grid">

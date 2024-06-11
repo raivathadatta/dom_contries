@@ -45,16 +45,17 @@ function changeBackgroundColor() {
     if (isDark) {
         document.body.style = " color:black"
         header.style.backgroundColor = "#FFFFFF"
-        screen_body.style.backgroundColor = "#FAFAFA"
-        toggleButton.style.backgroundColor = "#FAFAFA"
-        searchInput.style.backgroundColor = "#FAFAFA"
-        filter_button.style.backgroundColor = "#FAFAFA"
+        screen_body.style.backgroundColor = "hsl(0, 0%, 100%)"
+        toggleButton.style.backgroundColor = " hsl(0, 0%, 100%)"
+        searchInput.style.backgroundColor = " hsl(0, 0%, 100%)"
+        filter_button.style.backgroundColor = " hsl(0, 0%, 100%)"
         toggleButton.innerHTML = "Light Mode"
         toggleButton.style = "color:black;"
 
         Array.from(countries_grid.children).forEach((country_card) => {
             console.log(country_card)
-            country_card.style.backgroundColor = "#ffffff"
+            country_card.style.backgroundColor = "hsl(0, 0%, 97%)"
+            country_card.style.color = "black"
         })
         isDark = false
     } else {
@@ -71,6 +72,7 @@ function changeBackgroundColor() {
         Array.from(countries_grid.children).forEach((country_card) => {
             console.log(country_card)
             country_card.style.backgroundColor = "#2B3743"
+            country_card.style.color = "white"
         })
         isDark = true
 
@@ -123,8 +125,8 @@ function createCountryCard(element) {
     population.innerText = "Population: " + element['population']
     region.innerText = "Region: " + element['region']
 
-    countryCard.className = "w-[23%]  p-[3%]  m-2 w-[90%] "
-    countryCard.style.backgroundColor = "#FAFAFA"
+    countryCard.className = "sm:w-[23%]    m-2 w-[90%] "
+    countryCard.style.backgroundColor = "hsl(0, 0%, 97%)"
 
     countryCard.appendChild(flag)
     countryCard.appendChild(countryName)
@@ -159,8 +161,6 @@ function searchCountry() {
     console.log(filter_button_value, region_list[0].toLocaleLowerCase())
     Array.from(countries_grid.children).forEach((countryCard) => {
         let country = countryCard.querySelector('h2').textContent.toLowerCase()
-        // let country_region = countryCard.querySelector('#country_region')
-        console.log(search_country,country,"////////////")
         if (country.indexOf(search_country) == -1) {
             countryCard.classList.add('hidden')
 
@@ -200,8 +200,8 @@ function filterCountries() {
         countries_grid.innerHTML = ""
         countriesList.forEach((country) => {
             if (country['region'].toLocaleLowerCase() == selectedItem) {
-              
-                
+
+
                 console.log(country.flags.png)
                 countries_grid.appendChild(createCountryCard(country))
             }
