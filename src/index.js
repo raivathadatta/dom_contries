@@ -93,7 +93,7 @@ function fetchCountryList() {
         countriesList = countries
         countries.forEach((element) => {
 
-            createCountryCard(element)
+            countries_grid.appendChild(createCountryCard(element))
         });
         showContent()
 
@@ -123,14 +123,15 @@ function createCountryCard(element) {
     population.innerText = "Population: " + element['population']
     region.innerText = "Region: " + element['region']
 
-    countryCard.className = "w-[23%]  p-[3%]  m-2 w-[90%]"
+    countryCard.className = "w-[23%]  p-[3%]  m-2 w-[90%] "
+    countryCard.style.backgroundColor = "#FAFAFA"
 
     countryCard.appendChild(flag)
     countryCard.appendChild(countryName)
     countryCard.appendChild(capital)
     countryCard.appendChild(population)
     countryCard.appendChild(region)
-    countries_grid.appendChild(countryCard)
+
     countryCard.addEventListener('click', navigateToCountry)
 
 
@@ -142,48 +143,40 @@ function createCountryCard(element) {
         createSelectCountry()
     }
 
-    console.log(region_list)
+
+    return countryCard
 
 }
 
 
 
 function searchCountry() {
+
     let search_country = searchInput.value.toLowerCase()
     let filter_button_value = filter_button.value.toLowerCase()
 
 
-    if (filter_button_value == region_list[0].toLocaleLowerCase()) {
+    console.log(filter_button_value, region_list[0].toLocaleLowerCase())
+    Array.from(countries_grid.children).forEach((countryCard) => {
+        let country = countryCard.querySelector('h2').textContent.toLowerCase()
+        // let country_region = countryCard.querySelector('#country_region')
+        console.log(search_country,country,"////////////")
+        if (country.indexOf(search_country) == -1) {
+            countryCard.classList.add('hidden')
 
-        Array.from(countries_grid.children).forEach((countryCard) => {
-            let country = countryCard.querySelector('h2').textContent.toLowerCase()
-              if (country.indexOf(search_country) == -1) {
-                countryCard.classList.add('hidden')
-            } else {
-                countryCard.classList.remove('hidden')
-            }
-        })
-    } else {
-        console.log(filter_button_value, region_list[0].toLocaleLowerCase())
-        Array.from(countries_grid.children).forEach((countryCard) => {
-            let country = countryCard.querySelector('h2').textContent.toLowerCase()
-            let country_region = countryCard.querySelector('#country_region')
-            if (country.indexOf(search_country) != -1 && country_region.classList.contains('hidden')) {
-
-                countryCard.classList.remove('hidden')
-            } else {
-                countryCard.classList.add('hidden')
-            }
-        })
-    }
+        } else {
+            countryCard.classList.remove('hidden')
+        }
+    })
 
 
 }
 
 
 function showAllCountries() {
-    Array.from(countries_grid.children).forEach((countryCard) => {
-        countryCard.classList.remove('hidden')
+    countries_grid.innerHTML = ""
+    countriesList.forEach((country) => {
+        countries_grid.appendChild(createCountryCard(country))
     })
 }
 
@@ -204,15 +197,26 @@ function filterCountries() {
 
         showAllCountries()
     } else {
-        Array.from(countries_grid.children).forEach((countryCard) => {
-            let country_region = countryCard.querySelector('#country_region').textContent.toLowerCase()
-            console.log(country_region)
-            if (country_region.indexOf(selectedItem) == -1) {
-                countryCard.classList.add('hidden')
-            } else {
-                countryCard.classList.remove('hidden')
+        countries_grid.innerHTML = ""
+        countriesList.forEach((country) => {
+            if (country['region'].toLocaleLowerCase() == selectedItem) {
+              
+                
+                console.log(country.flags.png)
+                countries_grid.appendChild(createCountryCard(country))
             }
         })
+
+
+        //     Array.from(countries_grid.children).forEach((countryCard) => {
+        //         let country_region = countryCard.querySelector('#country_region').textContent.toLowerCase()
+        //         console.log(country_region)
+        //         if (country_region.indexOf(selectedItem) == -1) {
+        //             countryCard.classList.add('hidden')
+        //         } else {
+        //             countryCard.classList.remove('hidden')
+        //         }
+        //     })
     }
 
 }
